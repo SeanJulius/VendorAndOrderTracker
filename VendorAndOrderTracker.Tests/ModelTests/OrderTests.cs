@@ -35,5 +35,25 @@ namespace VendorAndOrderTracker.Tests
       string result = newOrder.Description;
       Assert.AreEqual(result,description);
     }
+
+    [TestMethod]
+    public void SetTitle_SetTitle_String()
+    {
+      Order newOrder = new Order("testTitle","testDescript",0,"testDate");
+      string updatedTitle = "updatedTitle";
+      newOrder.Title = updatedTitle;
+      string result = newOrder.Title;
+      Assert.AreEqual(result,updatedTitle);
+    }
+
+    [TestMethod]
+    public void SetDescription_SetDescription_String()
+    {
+      Order newOrder = new Order("testTitle","testDescript",0,"testDate");
+      string updatedDescript = "updatedDescript";
+      newOrder.Description = updatedDescript;
+      string result = newOrder.Description;
+      Assert.AreEqual(result,updatedDescript);
+    }
   }
 }
