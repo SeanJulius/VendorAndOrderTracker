@@ -72,16 +72,20 @@ namespace VendorAndOrderTracker.Tests
     }
 
     [TestMethod]
-    public void Find_ReturnsCorrectVendor_Vendor()
+    public void AddOrder_AssociatesOrderWithVendor_OrderList()
     {
-      string name01 = "Sam";
-      string description01 = "Sportsman";
-      string name02 = "Joe";
-      string descripton02 = "Tractor";
-      Vendor newVendor1 = new Vendor(name01,description01);
-      Vendor newVendor2 = new Vendor(name02,descripton02);
-      Vendor result = Vendor.Find(2);
-      Assert.AreEqual(newVendor2,result);
+      string title = "SmartyPants";
+      string description = "The Best Candy";
+      int price = 15;
+      string date = "August 21";
+      Order newOrder = new Order(title,description,price,date);
+      List<Order> newList = new List<Order> {newOrder};
+      string name = "Stacy's candy shop";
+      string vendorDescript = "Candy Store Owner";
+      Vendor newVendor = new Vendor(name,vendorDescript);
+      newVendor.AddOrder(newOrder);
+      List<Order> result = newVendor.Orders;
+      CollectionAssert.AreEqual(newList,result);
     }
   }
 }
