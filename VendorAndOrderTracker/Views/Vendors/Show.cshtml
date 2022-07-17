@@ -1,0 +1,25 @@
+@using VendorAndOrderTracker.Models;
+
+<h1>Vendor Details:</h1>
+
+<h2>Vendor Name: @Model["vendor"].Name</h2>
+<h2>Vendor Description: @Model["vendor"].Description</h2>
+@if(Model["orders"].Count == 0)
+{
+  <p>This Vendor has no orders</p>
+}
+<ul>
+  @foreach (Order order in Model["orders"])
+  {
+    <li>Order Title: @order.Title</li>
+    <li>Order Description: @order.Description</li>
+    <li>Order Price: $@order.Price</li>
+    <li>Order Date: @order.Date</li>
+    <br>  
+    
+  }
+</ul>
+<br>
+<a href='/vendors/@Model["vendor"].Id/orders/new'>Enter a new order</a>
+<br>
+<a href="/vendors">Return to Vendor list</a>
