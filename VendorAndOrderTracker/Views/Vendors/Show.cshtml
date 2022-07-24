@@ -1,25 +1,21 @@
+@{
+  Layout = "_Layout";
+}
+
 @using VendorAndOrderTracker.Models;
 
-<h1>Vendor Details:</h1>
-
-<h2>Vendor Name: @Model["vendor"].Name</h2>
+<h1>@Model["vendor"].Name</h1>
 <h2>Vendor Description: @Model["vendor"].Description</h2>
-@if(Model["orders"].Count == 0)
+
+<h3>Here are all the orders for this vendor:</h3>
+
+<ol>
+@foreach (Order order in @Model["orders"])
 {
-  <p>This Vendor has no orders</p>
+  <li><h3><a href='/vendors/@Model["vendor"].Id/orders/@order.Id'>@order.Title</a></h3></li>
 }
-<ul>
-  @foreach (Order order in Model["orders"])
-  {
-    <li>Order Title: @order.Title</li>
-    <li>Order Description: @order.Description</li>
-    <li>Order Price: $@order.Price</li>
-    <li>Order Date: @order.Date</li>
-    <br>  
-    
-  }
-</ul>
-<br>
-<a href='/vendors/@Model["vendor"].Id/orders/new'>Enter a new order</a>
-<br>
-<a href="/vendors">Return to Vendor list</a>
+</ol>
+
+<h3><a href='/vendors/@Model["vendor"].Id/orders/new'>Enter a new order</a></h3>
+<h3><a href='/vendors'>Return to vendor list</a></h3>
+<h3><a href='/'>Return to Main Page</a></h3>
